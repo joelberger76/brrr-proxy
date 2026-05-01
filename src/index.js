@@ -19,6 +19,12 @@ export default {
          // Parse incoming Cronitor payload
          const cronitorPayload = await request.json();
 
+      	// Validate required fields for message construction
+         if (!cronitorPayload.monitor || !cronitorPayload.description) {
+         	// "Security" through obscurity
+         	return new Response('Not Found', { status: 404 });
+         }
+
          // Construct message body
          const status = cronitorPayload.type == "Recovery" ? "🟢 [Resolved]" : "🔴 [Open]";
          const message = status + " " + cronitorPayload.monitor + "\n\n" + cronitorPayload.description;
