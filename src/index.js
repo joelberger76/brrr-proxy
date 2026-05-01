@@ -43,7 +43,7 @@ export default {
             method: "POST",
             headers: {
                "Content-Type": "application/json",
-               "Authorization": "Bearer " + env.BRRR_JOELS_IPHONE
+               "Authorization": "Bearer " + env.BRRR_JOELS_DEVICES
             },
             body: JSON.stringify(customPayload)
          });
